@@ -8,7 +8,7 @@
 .home-view {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 16px 80px;
+  padding: calc(16px + env(safe-area-inset-top)) 16px 80px;
 }
 
 /* Stats */
@@ -179,7 +179,7 @@
 .history-view {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 16px 80px;
+  padding: calc(16px + env(safe-area-inset-top)) 16px 80px;
 }
 
 .history-tabs {

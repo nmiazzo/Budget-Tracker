@@ -8,7 +8,7 @@
 
 .subscriptions-view {
   flex: 1;
-  padding: 16px 16px 80px;
+  padding: calc(16px + env(safe-area-inset-top)) 16px 80px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
