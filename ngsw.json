@@ -1,0 +1,127 @@
+{
+  "configVersion": 1,
+  "timestamp": 1771332894272,
+  "index": "/Budget-Tracker/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Budget-Tracker/favicon.ico",
+        "/Budget-Tracker/index.html",
+        "/Budget-Tracker/main-27GMWMVD.js",
+        "/Budget-Tracker/manifest.webmanifest",
+        "/Budget-Tracker/styles-7RJLDNVU.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Budget-Tracker/icons/categories/bills.svg",
+        "/Budget-Tracker/icons/categories/education.svg",
+        "/Budget-Tracker/icons/categories/entertainment.svg",
+        "/Budget-Tracker/icons/categories/food.svg",
+        "/Budget-Tracker/icons/categories/health.svg",
+        "/Budget-Tracker/icons/categories/other.svg",
+        "/Budget-Tracker/icons/categories/shopping.svg",
+        "/Budget-Tracker/icons/categories/transport.svg",
+        "/Budget-Tracker/icons/icon-128x128.png",
+        "/Budget-Tracker/icons/icon-144x144.png",
+        "/Budget-Tracker/icons/icon-152x152.png",
+        "/Budget-Tracker/icons/icon-192x192.png",
+        "/Budget-Tracker/icons/icon-384x384.png",
+        "/Budget-Tracker/icons/icon-512x512.png",
+        "/Budget-Tracker/icons/icon-72x72.png",
+        "/Budget-Tracker/icons/icon-96x96.png",
+        "/Budget-Tracker/icons/providers/afterpay.svg",
+        "/Budget-Tracker/icons/providers/klarna.svg",
+        "/Budget-Tracker/icons/providers/paypal.svg",
+        "/Budget-Tracker/icons/providers/scalapay.svg",
+        "/Budget-Tracker/icons/subscriptions/amazon.svg",
+        "/Budget-Tracker/icons/subscriptions/cloud.svg",
+        "/Budget-Tracker/icons/subscriptions/disney.svg",
+        "/Budget-Tracker/icons/subscriptions/gym.svg",
+        "/Budget-Tracker/icons/subscriptions/internet.svg",
+        "/Budget-Tracker/icons/subscriptions/netflix.svg",
+        "/Budget-Tracker/icons/subscriptions/phone.svg",
+        "/Budget-Tracker/icons/subscriptions/spotify.svg",
+        "/Budget-Tracker/icons/subscriptions/youtube.svg",
+        "/Budget-Tracker/media/fa-brands-400-AHOAZHCU.woff2",
+        "/Budget-Tracker/media/fa-regular-400-VRZYIBIZ.woff2",
+        "/Budget-Tracker/media/fa-solid-900-MDEYK55F.woff2",
+        "/Budget-Tracker/media/fa-v4compatibility-ETEVP6IB.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/Budget-Tracker/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/Budget-Tracker/icons/categories/bills.svg": "4321c0a4b8e00ef1d2e43057e58cd47be66a7054",
+    "/Budget-Tracker/icons/categories/education.svg": "4ad930f8771d1ae8358820a9113e5b4f27ce4f7d",
+    "/Budget-Tracker/icons/categories/entertainment.svg": "c2b94bfcd66117a4170913f544f8e288589edfec",
+    "/Budget-Tracker/icons/categories/food.svg": "a79f9acefc55387f74722313546025fac1611824",
+    "/Budget-Tracker/icons/categories/health.svg": "3f78afa70426e39e8d8e82ad4d6b5c7848adf5ef",
+    "/Budget-Tracker/icons/categories/other.svg": "a68253e34697000227f605ddf8e523a78e99b82f",
+    "/Budget-Tracker/icons/categories/shopping.svg": "42bbd2ee592462418db092122fba7a5b459e9072",
+    "/Budget-Tracker/icons/categories/transport.svg": "e7f59b6366070aa1cb28869940ca507e44fc064d",
+    "/Budget-Tracker/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/Budget-Tracker/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/Budget-Tracker/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/Budget-Tracker/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/Budget-Tracker/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/Budget-Tracker/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/Budget-Tracker/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/Budget-Tracker/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/Budget-Tracker/icons/providers/afterpay.svg": "8445c0e562d08cf08bc670dc00c1a7aa832bb8d1",
+    "/Budget-Tracker/icons/providers/klarna.svg": "8dd7e3e03e8e890920e2f475e5bf8c878947cf47",
+    "/Budget-Tracker/icons/providers/paypal.svg": "c94b5b90a87050a3f8883310319a27c4ec2c5551",
+    "/Budget-Tracker/icons/providers/scalapay.svg": "a7c58b6c8468f23d05d2429a310a296aae8f62e3",
+    "/Budget-Tracker/icons/subscriptions/amazon.svg": "3e54e4925354cda8047a03bf17c93582af3015fd",
+    "/Budget-Tracker/icons/subscriptions/cloud.svg": "112e7f7c8c976dfebef150dfcd0e0edf9fbd137d",
+    "/Budget-Tracker/icons/subscriptions/disney.svg": "51a323b7434f42f2742b91862bfd7e826f063344",
+    "/Budget-Tracker/icons/subscriptions/gym.svg": "03399fe30dac361ce848eabbcf3bf54f0dc4b647",
+    "/Budget-Tracker/icons/subscriptions/internet.svg": "b9068155d0670319fca0573c0d787e463a4c4a0f",
+    "/Budget-Tracker/icons/subscriptions/netflix.svg": "39d5fc2210dca261161bac08817f2b77e2a4ca83",
+    "/Budget-Tracker/icons/subscriptions/phone.svg": "e8af7bef251232a126166b857caa04bbc3e7f3b2",
+    "/Budget-Tracker/icons/subscriptions/spotify.svg": "aef7de2d609cf29f244c73bd6c56856fd4182213",
+    "/Budget-Tracker/icons/subscriptions/youtube.svg": "27d207e72330b11678e2aea8dad3404645942a6e",
+    "/Budget-Tracker/index.html": "e0551fc093429293ef1b80bd9a6d4183d0315c72",
+    "/Budget-Tracker/main-27GMWMVD.js": "b932282177e441a23b229cea668991b500ee1939",
+    "/Budget-Tracker/manifest.webmanifest": "ec37ad68fad1aeb7148d760c64c1d30d2a6af62b",
+    "/Budget-Tracker/media/fa-brands-400-AHOAZHCU.woff2": "e48612cd49700246d0cc0d2d1943ed8b9d157316",
+    "/Budget-Tracker/media/fa-regular-400-VRZYIBIZ.woff2": "708f3ca10d101babf966040b50be3bf239456384",
+    "/Budget-Tracker/media/fa-solid-900-MDEYK55F.woff2": "79f2a488fd9c1e1f01943a196f5abf53821e04d7",
+    "/Budget-Tracker/media/fa-v4compatibility-ETEVP6IB.woff2": "48baec990161d24f6b770e803c9c14cfe2d07da5",
+    "/Budget-Tracker/styles-7RJLDNVU.css": "e44b6d59170a41a069971396fb8eef12e2da6c5c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
