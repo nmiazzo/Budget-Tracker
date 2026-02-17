@@ -13,6 +13,7 @@ export class SettingsComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   message = signal('');
   messageType = signal<'success' | 'error'>('success');
+  showDeleteConfirm = signal(false);
 
   constructor(private budget: BudgetService) {}
 
@@ -54,5 +55,19 @@ export class SettingsComponent {
     this.message.set(msg);
     this.messageType.set(type);
     setTimeout(() => this.message.set(''), 3000);
+  }
+
+  confirmDeleteAll(): void {
+    this.showDeleteConfirm.set(true);
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirm.set(false);
+  }
+
+  deleteAllData(): void {
+    this.budget.clearAllData();
+    this.showDeleteConfirm.set(false);
+    this.showMessage('All data has been deleted', 'success');
   }
 }

@@ -347,4 +347,11 @@ export class BudgetService {
       .filter(e => e.date > now)
       .sort((a, b) => a.date.localeCompare(b.date));
   }
+
+  clearAllData(): void {
+    this._data.set({ expenses: [], incomes: [], subscriptions: [] });
+    this._budgetOverrides.set([]);
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(CATEGORIES_STORAGE_KEY);
+  }
 }
