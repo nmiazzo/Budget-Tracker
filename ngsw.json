@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1771342831441,
+  "timestamp": 1771343364591,
   "index": "/Budget-Tracker/index.html",
   "assetGroups": [
     {
@@ -13,9 +13,9 @@
       "urls": [
         "/Budget-Tracker/favicon.ico",
         "/Budget-Tracker/index.html",
-        "/Budget-Tracker/main-JLJINXC3.js",
+        "/Budget-Tracker/main-RSDKPNJO.js",
         "/Budget-Tracker/manifest.webmanifest",
-        "/Budget-Tracker/styles-7RJLDNVU.css"
+        "/Budget-Tracker/styles-IWBXMHSP.css"
       ],
       "patterns": []
     },
@@ -90,14 +90,14 @@
     "/Budget-Tracker/icons/subscriptions/phone.svg": "e8af7bef251232a126166b857caa04bbc3e7f3b2",
     "/Budget-Tracker/icons/subscriptions/spotify.svg": "aef7de2d609cf29f244c73bd6c56856fd4182213",
     "/Budget-Tracker/icons/subscriptions/youtube.svg": "27d207e72330b11678e2aea8dad3404645942a6e",
-    "/Budget-Tracker/index.html": "65d9c8b67fec58a480d3c3ce5b404a1db43c0edd",
-    "/Budget-Tracker/main-JLJINXC3.js": "f43958e1e8c8c4251a83eeec6dbd915f2750e12d",
+    "/Budget-Tracker/index.html": "1ecec7ad1d0c1a0714ebdee4fed8128cb92d39d7",
+    "/Budget-Tracker/main-RSDKPNJO.js": "70d82cdf3a40b0c185759b51cb5caf6db04e4205",
     "/Budget-Tracker/manifest.webmanifest": "e3d386e3a2587a6ef595e29c44590ea6050602f5",
     "/Budget-Tracker/media/fa-brands-400-AHOAZHCU.woff2": "e48612cd49700246d0cc0d2d1943ed8b9d157316",
     "/Budget-Tracker/media/fa-regular-400-VRZYIBIZ.woff2": "708f3ca10d101babf966040b50be3bf239456384",
     "/Budget-Tracker/media/fa-solid-900-MDEYK55F.woff2": "79f2a488fd9c1e1f01943a196f5abf53821e04d7",
     "/Budget-Tracker/media/fa-v4compatibility-ETEVP6IB.woff2": "48baec990161d24f6b770e803c9c14cfe2d07da5",
-    "/Budget-Tracker/styles-7RJLDNVU.css": "e44b6d59170a41a069971396fb8eef12e2da6c5c"
+    "/Budget-Tracker/styles-IWBXMHSP.css": "ba9d035aad91825fed8ca75d4523a120842a54d5"
   },
   "navigationUrls": [
     {
