@@ -1,19 +1,25 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BudgetService } from '../../services/budget.service';
 
 @Component({
   selector: 'app-budgets',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './budgets.component.html',
   styleUrl: './budgets.component.scss',
 })
 export class BudgetsComponent {
   constructor(readonly budget: BudgetService) {}
 
-  readonly budgetData = computed(() => {
-    return this.budget.categories.map(cat => {
+  editingCategoryId = signal<string | null>(null);
+  editMonthlyValue = signal<number>(0);
+
+  showHidden = signal(false);
+
+  private readonly allBudgetData = computed(() => {
+    return this.budget.categories().map(cat => {
       const weeklySpent = this.budget.getWeeklySpentByCategory(cat.id);
       const monthlySpent = this.budget.getMonthlySpentByCategory(cat.id);
       const weeklyRaw = cat.weeklyBudget > 0 ? (weeklySpent / cat.weeklyBudget) * 100 : 0;
@@ -29,6 +35,14 @@ export class BudgetsComponent {
       };
     });
   });
+
+  readonly budgetData = computed(() =>
+    this.allBudgetData().filter(b => b.monthlyBudget > 0)
+  );
+
+  readonly hiddenCategories = computed(() =>
+    this.allBudgetData().filter(b => b.monthlyBudget === 0)
+  );
 
   readonly totalBudget = computed(() => {
     const data = this.budgetData();
@@ -50,5 +64,30 @@ export class BudgetsComponent {
 
   formatCurrency(amount: number): string {
     return '\u20AC ' + amount.toFixed(2);
+  }
+
+  startEdit(categoryId: string, currentMonthly: number): void {
+    this.editingCategoryId.set(categoryId);
+    this.editMonthlyValue.set(currentMonthly);
+  }
+
+  saveEdit(): void {
+    const catId = this.editingCategoryId();
+    if (catId) {
+      this.budget.updateCategoryBudget(catId, this.editMonthlyValue());
+    }
+    this.editingCategoryId.set(null);
+  }
+
+  cancelEdit(): void {
+    this.editingCategoryId.set(null);
+  }
+
+  onEditKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.saveEdit();
+    } else if (event.key === 'Escape') {
+      this.cancelEdit();
+    }
   }
 }

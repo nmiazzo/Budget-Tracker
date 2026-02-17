@@ -1,15 +1,30 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { AppData, Expense, Income, Subscription, QuickAddSuggestion } from '../models/interfaces';
+import { AppData, Expense, Income, Subscription, QuickAddSuggestion, CategoryBudgetOverride } from '../models/interfaces';
 import categoriesData from '../data/categories.json';
 import providersData from '../data/providers.json';
 import subscriptionsData from '../data/subscriptions.json';
 import { Category, InstallmentProvider, SubscriptionTemplate } from '../models/interfaces';
 
 const STORAGE_KEY = 'budget-tracker-data';
+const CATEGORIES_STORAGE_KEY = 'budget-tracker-categories';
 
 @Injectable({ providedIn: 'root' })
 export class BudgetService {
-  readonly categories: Category[] = categoriesData;
+  private readonly _budgetOverrides = signal<CategoryBudgetOverride[]>(this.loadBudgetOverrides());
+
+  readonly categories = computed<Category[]>(() => {
+    const overrides = this._budgetOverrides();
+    return (categoriesData as Category[]).map(cat => {
+      const override = overrides.find(o => o.categoryId === cat.id);
+      const monthlyBudget = override ? override.monthlyBudget : cat.monthlyBudget;
+      return {
+        ...cat,
+        monthlyBudget,
+        weeklyBudget: this.computeWeeklyBudget(monthlyBudget),
+      };
+    });
+  });
+
   readonly providers: InstallmentProvider[] = providersData;
   readonly subscriptionTemplates: SubscriptionTemplate[] = subscriptionsData;
 
@@ -94,6 +109,33 @@ export class BudgetService {
   readonly activeSubscriptions = computed(() =>
     this._data().subscriptions.filter(s => s.active)
   );
+
+  computeWeeklyBudget(monthlyBudget: number): number {
+    const now = new Date();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const weekly = (monthlyBudget / daysInMonth) * 7;
+    return Math.ceil(weekly / 5) * 5;
+  }
+
+  updateCategoryBudget(categoryId: string, monthlyBudget: number): void {
+    this._budgetOverrides.update(overrides => {
+      const filtered = overrides.filter(o => o.categoryId !== categoryId);
+      return [...filtered, { categoryId, monthlyBudget }];
+    });
+    this.saveCategories();
+  }
+
+  private loadBudgetOverrides(): CategoryBudgetOverride[] {
+    try {
+      const raw = localStorage.getItem(CATEGORIES_STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch { /* ignore */ }
+    return [];
+  }
+
+  private saveCategories(): void {
+    localStorage.setItem(CATEGORIES_STORAGE_KEY, JSON.stringify(this._budgetOverrides()));
+  }
 
   private loadData(): AppData {
     try {
@@ -283,7 +325,7 @@ export class BudgetService {
   }
 
   getCategoryById(id: string): Category | undefined {
-    return this.categories.find(c => c.id === id);
+    return this.categories().find(c => c.id === id);
   }
 
   getProviderById(id: string): InstallmentProvider | undefined {

@@ -57,7 +57,36 @@
             }
             <span class="budget-name">{{ b.name }}</span>
           </div>
+          @if (editingCategoryId() !== b.id) {
+            <button class="edit-btn" (click)="startEdit(b.id, b.monthlyBudget)" title="Edit budget">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            </button>
+          }
         </div>
+
+        <!-- Inline edit row -->
+        @if (editingCategoryId() === b.id) {
+          <div class="edit-row">
+            <label class="edit-label">Monthly budget:</label>
+            <div class="edit-input-group">
+              <span class="edit-currency">&euro;</span>
+              <input
+                type="number"
+                class="edit-input"
+                [ngModel]="editMonthlyValue()"
+                (ngModelChange)="editMonthlyValue.set($event)"
+                (keydown)="onEditKeydown($event)"
+                min="0"
+                step="5"
+                autofocus>
+              <button class="edit-action save" (click)="saveEdit()" title="Save">&#x2713;</button>
+              <button class="edit-action cancel" (click)="cancelEdit()" title="Cancel">&#x2715;</button>
+            </div>
+          </div>
+        }
 
         <!-- Weekly row -->
         <div class="bar-row">
@@ -103,4 +132,60 @@
       </div>
     }
   </div>
+
+  <!-- Hidden Categories -->
+  @if (hiddenCategories().length > 0) {
+    <div class="hidden-section">
+      <button class="hidden-toggle" (click)="showHidden.set(!showHidden())">
+        <span>Hidden categories ({{ hiddenCategories().length }})</span>
+        <svg
+          viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+          [class.expanded]="showHidden()">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      @if (showHidden()) {
+        <div class="hidden-list">
+          @for (h of hiddenCategories(); track h.id) {
+            <div class="hidden-card" [style.--cat-color]="h.color">
+              <div class="hidden-left">
+                @if (h.icon) {
+                  @if (budget.isIconClass(h.icon)) {
+                    <i [class]="h.icon" class="cat-icon" [style.color]="h.color"></i>
+                  } @else {
+                    <img [src]="'icons/categories/' + h.icon" [alt]="h.name" width="18" height="18">
+                  }
+                }
+                <span class="hidden-name">{{ h.name }}</span>
+              </div>
+              @if (editingCategoryId() !== h.id) {
+                <button class="edit-btn" (click)="startEdit(h.id, h.monthlyBudget)" title="Set budget">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                  </svg>
+                </button>
+              }
+              @if (editingCategoryId() === h.id) {
+                <div class="edit-input-group">
+                  <span class="edit-currency">&euro;</span>
+                  <input
+                    type="number"
+                    class="edit-input"
+                    [ngModel]="editMonthlyValue()"
+                    (ngModelChange)="editMonthlyValue.set($event)"
+                    (keydown)="onEditKeydown($event)"
+                    min="0"
+                    step="5"
+                    autofocus>
+                  <button class="edit-action save" (click)="saveEdit()" title="Save">&#x2713;</button>
+                  <button class="edit-action cancel" (click)="cancelEdit()" title="Cancel">&#x2715;</button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
 </div>

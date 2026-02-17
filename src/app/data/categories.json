@@ -3,7 +3,7 @@
     "id": "food",
     "name": "Food & Groceries",
     "icon": "fa-solid fa-utensils",
-    "weeklyBudget": 80,
+    "weeklyBudget": 0,
     "monthlyBudget": 300,
     "color": "#4CAF50"
   },
@@ -11,7 +11,7 @@
     "id": "transport",
     "name": "Transport",
     "icon": "fa-solid fa-car",
-    "weeklyBudget": 30,
+    "weeklyBudget": 0,
     "monthlyBudget": 120,
     "color": "#2196F3"
   },
@@ -19,7 +19,7 @@
     "id": "entertainment",
     "name": "Entertainment",
     "icon": "fa-solid fa-film",
-    "weeklyBudget": 25,
+    "weeklyBudget": 0,
     "monthlyBudget": 100,
     "color": "#9C27B0"
   },
@@ -27,7 +27,7 @@
     "id": "shopping",
     "name": "Shopping",
     "icon": "fa-solid fa-bag-shopping",
-    "weeklyBudget": 40,
+    "weeklyBudget": 0,
     "monthlyBudget": 150,
     "color": "#FF9800"
   },
@@ -35,7 +35,7 @@
     "id": "health",
     "name": "Health",
     "icon": "fa-solid fa-heart-pulse",
-    "weeklyBudget": 20,
+    "weeklyBudget": 0,
     "monthlyBudget": 80,
     "color": "#F44336"
   },
@@ -43,7 +43,7 @@
     "id": "bills",
     "name": "Bills & Utilities",
     "icon": "fa-solid fa-file-invoice-dollar",
-    "weeklyBudget": 50,
+    "weeklyBudget": 0,
     "monthlyBudget": 200,
     "color": "#607D8B"
   },
@@ -51,7 +51,7 @@
     "id": "education",
     "name": "Education",
     "icon": "fa-solid fa-graduation-cap",
-    "weeklyBudget": 15,
+    "weeklyBudget": 0,
     "monthlyBudget": 60,
     "color": "#3F51B5"
   },
@@ -59,7 +59,7 @@
     "id": "other",
     "name": "Other",
     "icon": "fa-solid fa-tag",
-    "weeklyBudget": 25,
+    "weeklyBudget": 0,
     "monthlyBudget": 100,
     "color": "#795548"
   }

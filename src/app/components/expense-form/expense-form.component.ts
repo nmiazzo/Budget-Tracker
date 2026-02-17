@@ -30,7 +30,7 @@ export class ExpenseFormComponent implements OnInit {
   ngOnInit(): void {
     this.amount = this.initialAmount();
     this.description = this.initialDescription();
-    this.categoryId = this.initialCategory() || this.budget.categories[0].id;
+    this.categoryId = this.initialCategory() || this.budget.categories()[0].id;
     const today = new Date();
     this.date = this.formatDateInput(today);
     this.firstPaymentDate = this.date;

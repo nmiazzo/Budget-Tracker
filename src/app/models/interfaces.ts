@@ -52,6 +52,11 @@ export interface Subscription {
   active: boolean;
 }
 
+export interface CategoryBudgetOverride {
+  categoryId: string;
+  monthlyBudget: number;
+}
+
 export interface AppData {
   expenses: Expense[];
   incomes: Income[];

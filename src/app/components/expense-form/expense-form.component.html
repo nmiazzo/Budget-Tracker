@@ -19,7 +19,7 @@
       <div class="form-group">
         <label>Category</label>
         <div class="category-grid">
-          @for (cat of budget.categories; track cat.id) {
+          @for (cat of budget.categories(); track cat.id) {
             <button
               class="cat-btn"
               [class.active]="categoryId === cat.id"
