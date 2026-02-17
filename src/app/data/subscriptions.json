@@ -1,0 +1,62 @@
+[
+  {
+    "id": "netflix",
+    "name": "Netflix",
+    "icon": "fa-solid fa-n",
+    "defaultAmount": 15.99
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "icon": "fa-brands fa-spotify",
+    "defaultAmount": 10.99
+  },
+  {
+    "id": "amazon-prime",
+    "name": "Amazon Prime",
+    "icon": "fa-brands fa-amazon",
+    "defaultAmount": 8.99
+  },
+  {
+    "id": "disney-plus",
+    "name": "Disney+",
+    "icon": "fa-solid fa-d",
+    "defaultAmount": 11.99
+  },
+  {
+    "id": "youtube-premium",
+    "name": "YouTube Premium",
+    "icon": "fa-brands fa-youtube",
+    "defaultAmount": 13.99
+  },
+  {
+    "id": "gym",
+    "name": "Gym Membership",
+    "icon": "fa-solid fa-dumbbell",
+    "defaultAmount": 29.99
+  },
+  {
+    "id": "cloud-storage",
+    "name": "Cloud Storage",
+    "icon": "fa-solid fa-cloud",
+    "defaultAmount": 2.99
+  },
+  {
+    "id": "phone-plan",
+    "name": "Phone Plan",
+    "icon": "fa-solid fa-mobile-screen",
+    "defaultAmount": 19.99
+  },
+  {
+    "id": "internet",
+    "name": "Internet",
+    "icon": "fa-solid fa-wifi",
+    "defaultAmount": 34.99
+  },
+  {
+    "id": "custom",
+    "name": "Custom",
+    "icon": "",
+    "defaultAmount": 0
+  }
+]

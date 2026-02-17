@@ -1,0 +1,111 @@
+<div class="modal-backdrop" (click)="cancel()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>New Expense</h2>
+      <button class="close-btn" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="amount-display">
+        <span class="currency">&euro;</span>
+        <span class="amount-value">{{ amount.toFixed(2) }}</span>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="description" placeholder="What did you spend on?" autofocus>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <div class="category-grid">
+          @for (cat of budget.categories; track cat.id) {
+            <button
+              class="cat-btn"
+              [class.active]="categoryId === cat.id"
+              [style.--cat-color]="cat.color"
+              (click)="categoryId = cat.id">
+              @if (cat.icon) {
+                @if (budget.isIconClass(cat.icon)) {
+                  <i [class]="cat.icon" class="cat-icon"></i>
+                } @else {
+                  <img [src]="'icons/categories/' + cat.icon" [alt]="cat.name" width="20" height="20">
+                }
+              }
+              <span>{{ cat.name }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" [(ngModel)]="date">
+      </div>
+
+      <!-- Installments Toggle -->
+      <div class="form-group toggle-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="isInstallment">
+          <span>Split into installments</span>
+        </label>
+      </div>
+
+      @if (isInstallment) {
+        <div class="installment-section">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Installments</label>
+              <input type="number" [(ngModel)]="numInstallments" min="2" max="24">
+            </div>
+            <div class="form-group">
+              <label>First payment</label>
+              <input type="date" [(ngModel)]="firstPaymentDate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Provider</label>
+            <div class="provider-grid">
+              @for (p of budget.providers; track p.id) {
+                <button
+                  class="provider-btn"
+                  [class.active]="installmentProviderId === p.id"
+                  (click)="installmentProviderId = p.id">
+                  @if (p.icon) {
+                    @if (budget.isIconClass(p.icon)) {
+                      <i [class]="p.icon" class="provider-icon"></i>
+                    } @else {
+                      <img [src]="'icons/providers/' + p.icon" [alt]="p.name" width="18" height="18">
+                    }
+                  }
+                  <span>{{ p.name }}</span>
+                </button>
+              }
+            </div>
+          </div>
+
+          @if (installmentPreview.length > 0) {
+            <div class="preview">
+              <label>Preview</label>
+              <div class="preview-list">
+                @for (item of installmentPreview; track item.number) {
+                  <div class="preview-item">
+                    <span class="preview-num">#{{ item.number }}</span>
+                    <span class="preview-date">{{ item.date }}</span>
+                    <span class="preview-amount">&euro;{{ item.amount.toFixed(2) }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" (click)="cancel()">Cancel</button>
+      <button class="btn-save" (click)="save()" [disabled]="amount <= 0 || !description.trim()">Save</button>
+    </div>
+  </div>
+</div>

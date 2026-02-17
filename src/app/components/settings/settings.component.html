@@ -1,0 +1,32 @@
+<div class="settings-view">
+  <h2 class="page-title">Settings</h2>
+
+  <div class="settings-section">
+    <h3 class="section-title">Backup &amp; Restore</h3>
+    <p class="section-desc">Export your data as a JSON file or restore from a previous backup.</p>
+
+    <div class="button-group">
+      <button class="settings-btn export" (click)="exportData()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export Backup
+      </button>
+      <button class="settings-btn import" (click)="triggerImport()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Restore Backup
+      </button>
+    </div>
+
+    <input #fileInput type="file" accept=".json" hidden (change)="onFileSelected($event)">
+  </div>
+
+  <div class="settings-section">
+    <h3 class="section-title">About</h3>
+    <p class="section-desc">Budget Tracker v1.0<br>All data is stored locally on your device.</p>
+  </div>
+
+  @if (message()) {
+    <div class="toast" [class.error]="messageType() === 'error'">
+      {{ message() }}
+    </div>
+  }
+</div>

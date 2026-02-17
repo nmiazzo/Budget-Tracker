@@ -1,0 +1,236 @@
+.subscriptions-view {
+  padding: 16px 16px 80px;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sub-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+
+  &.inactive {
+    opacity: 0.5;
+  }
+}
+
+.sub-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sub-icon-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.sub-fa-icon {
+  font-size: 22px;
+  width: 28px;
+  text-align: center;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.sub-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sub-detail {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+
+.sub-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.sub-amount {
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sub-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  color: #666;
+
+  &.delete {
+    color: #e53935;
+  }
+}
+
+/* Template Grid */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.template-btn {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+
+  &:active {
+    border-color: #1a73e8;
+  }
+}
+
+.template-icon-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #666;
+}
+
+.template-fa-icon {
+  font-size: 24px;
+  color: #555;
+}
+
+.template-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.template-price {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Form */
+.sub-form {
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    &:focus { border-color: #1a73e8; }
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  color: #666;
+}
+
+.btn-save {
+  flex: 2;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  &:disabled { background: #ccc; }
+  &:active:not(:disabled) { opacity: 0.85; }
+}

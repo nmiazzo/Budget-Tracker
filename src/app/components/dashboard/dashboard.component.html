@@ -1,0 +1,183 @@
+<!-- TAB: HOME -->
+@if (activeTab() === 'home') {
+  <div class="home-view">
+    <!-- Stats Cards -->
+    <div class="stats-section">
+      <div class="stat-card balance" [class.negative]="balance() < 0">
+        <span class="stat-label">Balance</span>
+        <span class="stat-value">{{ formatCurrency(balance()) }}</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card income">
+          <span class="stat-label">Income</span>
+          <span class="stat-value">{{ formatCurrency(monthIncome()) }}</span>
+        </div>
+        <div class="stat-card expense">
+          <span class="stat-label">Spent</span>
+          <span class="stat-value">{{ formatCurrency(monthExpenses()) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keypad -->
+    <div class="keypad-section">
+      <app-keypad (submit)="onKeypadSubmit($event)"></app-keypad>
+    </div>
+
+    <!-- Quick Add Suggestions -->
+    @if (suggestions().length > 0) {
+      <div class="quick-add-section">
+        <h3 class="section-title">Quick Add</h3>
+        <div class="suggestions-list">
+          @for (s of suggestions(); track s.description) {
+            <button class="suggestion-chip" [style.background]="getCategoryColor(s.categoryId) + '20'" [style.border-color]="getCategoryColor(s.categoryId)" (click)="onQuickAdd(s)">
+              <span class="chip-name">{{ s.description }}</span>
+              <span class="chip-amount" [style.color]="getCategoryColor(s.categoryId)">{{ formatCurrency(s.amount) }}</span>
+            </button>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Upcoming -->
+    @if (upcomingExpenses().length > 0) {
+      <div class="upcoming-section">
+        <h3 class="section-title">Upcoming</h3>
+        @for (e of upcomingExpenses(); track e.id) {
+          <div class="upcoming-item">
+            <div class="upcoming-left">
+              <span class="dot" [style.background]="getCategoryColor(e.categoryId)"></span>
+              <div>
+                <span class="upcoming-desc">{{ e.description }}</span>
+                <span class="upcoming-date">{{ formatDate(e.date) }}</span>
+              </div>
+            </div>
+            <span class="upcoming-amount">{{ formatCurrency(e.amount) }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Income button -->
+    <button class="income-fab" (click)="showIncomeForm.set(true)">+ Income</button>
+  </div>
+}
+
+<!-- TAB: BUDGETS -->
+@if (activeTab() === 'budgets') {
+  <app-budgets></app-budgets>
+}
+
+<!-- TAB: SUBSCRIPTIONS -->
+@if (activeTab() === 'subscriptions') {
+  <app-subscriptions></app-subscriptions>
+}
+
+<!-- TAB: HISTORY -->
+@if (activeTab() === 'history') {
+  <div class="history-view">
+    <div class="history-tabs">
+      <button [class.active]="historyTab() === 'expenses'" (click)="historyTab.set('expenses')">Expenses</button>
+      <button [class.active]="historyTab() === 'incomes'" (click)="historyTab.set('incomes')">Incomes</button>
+    </div>
+    @if (historyTab() === 'expenses') {
+      <div class="history-list">
+        @for (e of recentExpenses(); track e.id) {
+          <div class="history-item">
+            <div class="history-left">
+              <span class="dot" [style.background]="getCategoryColor(e.categoryId)"></span>
+              <div>
+                <span class="history-desc">{{ e.description }}</span>
+                <span class="history-date">{{ formatDate(e.date) }}</span>
+                @if (e.isInstallment) {
+                  <span class="history-badge installment">Installment {{ e.installmentNumber }}/{{ e.totalInstallments }}</span>
+                }
+                @if (e.subscriptionId) {
+                  <span class="history-badge subscription">Subscription</span>
+                }
+              </div>
+            </div>
+            <div class="history-right">
+              <span class="history-amount">-{{ formatCurrency(e.amount) }}</span>
+              <button class="delete-btn" (click)="deleteExpense(e.id)">&#x2715;</button>
+            </div>
+          </div>
+        }
+        @if (recentExpenses().length === 0) {
+          <div class="empty-state">No expenses yet</div>
+        }
+      </div>
+    }
+    @if (historyTab() === 'incomes') {
+      <div class="history-list">
+        @for (i of recentIncomes(); track i.id) {
+          <div class="history-item">
+            <div class="history-left">
+              <span class="dot" style="background: #4CAF50"></span>
+              <div>
+                <span class="history-desc">{{ i.description }}</span>
+                <span class="history-date">{{ formatDate(i.date) }}</span>
+              </div>
+            </div>
+            <div class="history-right">
+              <span class="history-amount income-amount">+{{ formatCurrency(i.amount) }}</span>
+              <button class="delete-btn" (click)="deleteIncome(i.id)">&#x2715;</button>
+            </div>
+          </div>
+        }
+        @if (recentIncomes().length === 0) {
+          <div class="empty-state">No incomes yet</div>
+        }
+      </div>
+    }
+  </div>
+}
+
+<!-- TAB: SETTINGS -->
+@if (activeTab() === 'settings') {
+  <app-settings></app-settings>
+}
+
+<!-- Expense Form Modal -->
+@if (showExpenseForm()) {
+  <app-expense-form
+    [initialAmount]="quickAddAmount()"
+    [initialDescription]="quickAddDescription()"
+    [initialCategory]="quickAddCategory()"
+    (close)="onExpenseFormClose($event)">
+  </app-expense-form>
+}
+
+<!-- Income Form Modal -->
+@if (showIncomeForm()) {
+  <app-income-form (close)="onIncomeFormClose()"></app-income-form>
+}
+
+<!-- Success Toast -->
+@if (showToast()) {
+  <div class="toast">Expense added successfully</div>
+}
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+  <button [class.active]="activeTab() === 'home'" (click)="setTab('home')">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+    <span>Home</span>
+  </button>
+  <button [class.active]="activeTab() === 'budgets'" (click)="setTab('budgets')">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    <span>Budgets</span>
+  </button>
+  <button [class.active]="activeTab() === 'subscriptions'" (click)="setTab('subscriptions')">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+    <span>Subs</span>
+  </button>
+  <button [class.active]="activeTab() === 'history'" (click)="setTab('history')">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>History</span>
+  </button>
+  <button [class.active]="activeTab() === 'settings'" (click)="setTab('settings')">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>Settings</span>
+  </button>
+</nav>

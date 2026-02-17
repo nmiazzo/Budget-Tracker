@@ -1,0 +1,92 @@
+.settings-view {
+  padding: 16px 16px 80px;
+  overflow-y: auto;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #222;
+}
+
+.settings-section {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.settings-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+
+  &.export {
+    background: #1a73e8;
+    color: #fff;
+  }
+
+  &.import {
+    background: #f0f0f0;
+    color: #333;
+  }
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2e7d32;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 300;
+  animation: fadeInUp 0.3s ease-out;
+
+  &.error {
+    background: #e53935;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

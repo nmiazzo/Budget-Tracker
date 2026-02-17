@@ -1,0 +1,27 @@
+[
+  {
+    "id": "klarna",
+    "name": "Klarna",
+    "icon": "fa-solid fa-k"
+  },
+  {
+    "id": "paypal",
+    "name": "PayPal Pay Later",
+    "icon": "fa-brands fa-paypal"
+  },
+  {
+    "id": "scalapay",
+    "name": "Scalapay",
+    "icon": "fa-solid fa-s"
+  },
+  {
+    "id": "afterpay",
+    "name": "Afterpay",
+    "icon": "fa-solid fa-a"
+  },
+  {
+    "id": "none",
+    "name": "No Provider",
+    "icon": ""
+  }
+]

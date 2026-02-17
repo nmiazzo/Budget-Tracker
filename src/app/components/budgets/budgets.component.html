@@ -1,0 +1,106 @@
+<div class="budgets-view">
+  <!-- Total Budget Summary -->
+  <div class="total-card">
+    <div class="total-header">
+      <span class="total-label">Total Budget</span>
+    </div>
+    <!-- Weekly total -->
+    <div class="total-row">
+      <div class="total-row-header">
+        <span class="period-label">Weekly</span>
+        <span class="total-amounts-inline">
+          {{ formatCurrency(totalBudget().weeklySpent) }}
+          <span class="total-of-inline">/ {{ formatCurrency(totalBudget().weeklyBudget) }}</span>
+        </span>
+      </div>
+      <div class="progress-bar total-progress">
+        <div
+          class="progress-fill"
+          [style.width.%]="totalBudget().weeklyPercent"
+          [class.over]="totalBudget().weeklyRawPercent >= 100"
+          [class.warning]="totalBudget().weeklyRawPercent >= 90 && totalBudget().weeklyRawPercent < 100">
+        </div>
+      </div>
+    </div>
+    <!-- Monthly total -->
+    <div class="total-row">
+      <div class="total-row-header">
+        <span class="period-label">Monthly</span>
+        <span class="total-amounts-inline">
+          {{ formatCurrency(totalBudget().monthlySpent) }}
+          <span class="total-of-inline">/ {{ formatCurrency(totalBudget().monthlyBudget) }}</span>
+        </span>
+      </div>
+      <div class="progress-bar total-progress">
+        <div
+          class="progress-fill"
+          [style.width.%]="totalBudget().monthlyPercent"
+          [class.over]="totalBudget().monthlyRawPercent >= 100"
+          [class.warning]="totalBudget().monthlyRawPercent >= 90 && totalBudget().monthlyRawPercent < 100">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Per-Category Cards -->
+  <div class="budget-list">
+    @for (b of budgetData(); track b.id) {
+      <div class="budget-card" [style.--cat-color]="b.color">
+        <div class="budget-header">
+          <div class="budget-left">
+            @if (b.icon) {
+              @if (budget.isIconClass(b.icon)) {
+                <i [class]="b.icon" class="cat-icon" [style.color]="b.color"></i>
+              } @else {
+                <img [src]="'icons/categories/' + b.icon" [alt]="b.name" width="22" height="22">
+              }
+            }
+            <span class="budget-name">{{ b.name }}</span>
+          </div>
+        </div>
+
+        <!-- Weekly row -->
+        <div class="bar-row">
+          <span class="bar-label">W</span>
+          <div class="bar-track">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="b.weeklyPercent"
+                [style.background]="b.weeklyRawPercent >= 100 ? '#e53935' : b.weeklyRawPercent >= 90 ? '#ff9800' : b.color">
+              </div>
+            </div>
+          </div>
+          <span class="bar-amounts">
+            {{ formatCurrency(b.weeklySpent) }}
+            <span class="bar-of">/ {{ formatCurrency(b.weeklyBudget) }}</span>
+          </span>
+        </div>
+
+        <!-- Monthly row -->
+        <div class="bar-row">
+          <span class="bar-label">M</span>
+          <div class="bar-track">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="b.monthlyPercent"
+                [style.background]="b.monthlyRawPercent >= 100 ? '#e53935' : b.monthlyRawPercent >= 90 ? '#ff9800' : b.color">
+              </div>
+            </div>
+          </div>
+          <span class="bar-amounts">
+            {{ formatCurrency(b.monthlySpent) }}
+            <span class="bar-of">/ {{ formatCurrency(b.monthlyBudget) }}</span>
+          </span>
+        </div>
+
+        @if (b.weeklyRawPercent >= 100 || b.monthlyRawPercent >= 100) {
+          <span class="budget-warning exceeded">Budget exceeded!</span>
+        } @else if (b.weeklyRawPercent >= 90 || b.monthlyRawPercent >= 90) {
+          <span class="budget-warning almost">Budget almost reached!</span>
+        }
+      </div>
+    }
+  </div>
+</div>

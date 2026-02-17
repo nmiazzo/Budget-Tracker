@@ -1,0 +1,132 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 0;
+
+  h2 { font-size: 18px; font-weight: 600; margin: 0; }
+  .close-btn { background: none; border: none; font-size: 24px; color: #999; cursor: pointer; }
+}
+
+.modal-body {
+  padding: 12px 20px;
+}
+
+.amount-display {
+  text-align: center;
+  padding: 8px 0 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  .currency { font-size: 20px; color: #999; }
+  .amount-value { font-size: 32px; font-weight: 700; color: #2e7d32; }
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.key {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active { background: #e0e0e0; }
+  &.fn { background: #e8e8e8; font-size: 16px; font-weight: 600; color: #666; }
+}
+
+.form-group {
+  margin-bottom: 14px;
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    &:focus { border-color: #4CAF50; }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  gap: 10px;
+  padding: 12px 20px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  color: #666;
+}
+
+.btn-save {
+  flex: 2;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  &:disabled { background: #ccc; }
+  &:active:not(:disabled) { opacity: 0.85; }
+}
